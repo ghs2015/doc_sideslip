@@ -1,8 +1,6 @@
+# Side slip angle estimation by straight fixing
 
-
-
-
-## Asumptions
+## Assumptions
 
 - Method to check the side slip angle estimation is valid or normal.
   - Positively correlated with the **steering wheel angle** and **yaw rate** when on the **EVEN surface**.
@@ -13,6 +11,7 @@
   - Azimuth estimation is derived from IMU gyro measurements and current position, velocity, and attitude.
 - Some observations show there are big difference (2 degree) between corrected yaw rate and raw yaw rate, although they are in difference frames. However, some plots under this condition still show reasonable side slip estimation by (azimuth - track ground).
   - **Guess**: The estimated bias is fixed for yaw rate. The confidence of yaw rate is low. The azimuth is estimated by fusion which is not severely affected by very the low yaw rate.
+  - **Result**: The coefficient setting is incorrect. This is fixed now.
 
 ## To check
 
@@ -191,27 +190,58 @@ The oscillation of steering wheel angle may be related to estimated side slip re
 ## To-do:
 
 - [x] Select cornering (lat, lon) range and corresponding straight range.
+
 - [x] Generate tuned results.
+
 - [x] Plot.
+	
 	- [x] jjjsteering angle
+	
 - [x] save plots
+
 - [x] Statistically analyze.
 	- [x] Covariance 
 		- fixed sideslip and steering angle.
 		- fixed sideslip and yaw rate.
 		- yaw rate and  steering angle
+	
 - [x] test with more vehicles.
+
 - [x] Test with more road segments.
   - [x] Add road segment NO.2 
   - [x] Plot two straight segments preceding and following the corners.
+  
 - [x] plot additional variables
 	- [x] Add plots of roll, pitch.
 	- [x] Add plots of yaw rate bias estimation (yaw rate std).
+	
 - [x] Draw assumptions about side-slip performance evaluation.
+
 - [ ] Analyze the reason of insignificant (returning) side-slip. 
   - [x] interaction with decoded raw IMU yaw rate
   - [x] with roll, pitch
   - [ ] see raw roll rate and pitch rate??
-- [ ] Solutions?
-  - [ ] Improve current algorithm?
-  - [ ] Use a separate  yaw (or plus attitude) estimation based on short-term gyro outputs.
+  
+- [x] Solutions?
+  
+  - Improve current algorithm?
+  
+  - Use a separate  yaw (or plus attitude) estimation based on short-term gyro outputs.
+  
+  - There seems to be a 0.001 degree/second bias, which may cause inaccurate yaw estimation given no bias fix. Gyro bias estimation is required!
+  
+- [x] Plots and statistics.
+
+  - [x] Add `diff_yaw_rate` to the correlation matrix.
+  - [x] Add mean calculation to `diff_yaw_rate`.
+  - [x] (optional) Plot correlations in a statistical way.
+  - [x] Need remove the bags which has incorrect IMU coefficient.
+  - [x] May add IMU-Vehicle rotation to gyro rates.
+  - [x] Need to re-factor the source code for efficiency?
+    - [x] dataframe operation? No need.
+    - [x] plotting, may need close? Done.
+
+- [ ] More observations.
+
+  - [ ] Correlation between azimuth and pitch, roll. Read some references.
+  - [ ] Correlation between yaw rate bias and other variables.

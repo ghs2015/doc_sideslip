@@ -241,7 +241,8 @@ The oscillation of steering wheel angle may be related to estimated side slip re
     - [x] dataframe operation? No need.
     - [x] plotting, may need close? Done.
 
-- [ ] More observations.
+- [x] More observations.
 
-  - [ ] Correlation between azimuth and pitch, roll. Read some references.
-  - [ ] Correlation between yaw rate bias and other variables.
+  - [x] Correlation between azimuth and pitch, roll. (Read some references.)
+  - [x] Correlation between yaw rate bias and other variables.
+- [ ] More bags?

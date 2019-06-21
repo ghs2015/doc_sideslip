@@ -1,0 +1,394 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+
+@InProceedings{Review2018,
+  Title                    = {On the Vehicle Sideslip Angle Estimation: A Literature Review of Methods, Models,and Innovations},
+  Author                   = {{Chindamo, Daniel and Lenzo, Basilio and Gadola, Marco}},
+  Year                     = {2018},
+
+  Abstract                 = {Typical active safety systems that control the dynamics of passenger cars rely on the
+real-time monitoring of the vehicle sideslip angle (VSA), together with other signals such as the
+wheel angular velocities, steering angle, lateral acceleration, and the rate of rotation about the vertical
+axis, which is known as the yaw rate. The VSA (also known as the attitude or “drifting” angle)
+is defined as the angle between the vehicle’s longitudinal axis and the direction of travel, taking
+the centre of gravity as a reference. It is basically a measure of the misalignment between vehicle
+orientation and trajectory; therefore, it is a vital piece of information enabling directional stability
+assessment, such as in transience following emergency manoeuvres, for instance. As explained in the
+introduction, the VSA is not measured directly for impracticality, and it is estimated on the basis of
+available measurements such as wheel velocities, linear and angular accelerations, etc. This work is
+intended to provide a comprehensive literature review on the VSA estimation problem. Two main
+estimation methods have been categorised, i.e., observer-based and neural network-based, focussing
+on the most effective and innovative approaches. As the first method normally relies on a vehicle
+model, a review of the vehicle models has been included. The advantages and limitations of each
+technique have been highlighted and discussed.
+},
+  Doi                      = {10.3390/app8030355},
+  File                     = {:papers/OntheVehicleSideslipAngleEstimation.pdf:PDF},
+  Keywords                 = {vehicle state estimation; vehicle dynamics; Extended Kalman Filter; Unscented Kalman Filter; GPS-aided estimation; neural networks},
+  Review                   = {applied  
+sciences
+
+Review
+
+On the Vehicle Sideslip Angle Estimation:
+A Literature Review of Methods, Models,
+and Innovations
+
+Daniel Chindamo 1,* ID , Basilio Lenzo 2 ID and Marco Gadola 1 ID
+1 Department of Industrial and Mechanical Engineering, Automotive Group, University of Brescia,
+
+I-25123 Brescia, Italy; marco.gadola@unibs.it
+2 Department of Engineering and Mathematics, Sheffield Hallam University, Sheffield S1 1WB, UK;
+
+basilio.lenzo@shu.ac.uk
+* Correspondence: daniel.chindamo@unibs.it; Tel.: +39-030-371-5663
+
+Received: 8 January 2018; Accepted: 14 February 2018; Published: 1 March 2018
+
+Abstract: Typical active safety systems that control the dynamics of passenger cars rely on the
+real-time monitoring of the vehicle sideslip angle (VSA), together with other signals such as the
+wheel angular velocities, steering angle, lateral acceleration, and the rate of rotation about the vertical
+axis, which is known as the yaw rate. The VSA (also known as the attitude or “drifting” angle)
+is defined as the angle between the vehicle’s longitudinal axis and the direction of travel, taking
+the centre of gravity as a reference. It is basically a measure of the misalignment between vehicle
+orientation and trajectory; therefore, it is a vital piece of information enabling directional stability
+assessment, such as in transience following emergency manoeuvres, for instance. As explained in the
+introduction, the VSA is not measured directly for impracticality, and it is estimated on the basis of
+available measurements such as wheel velocities, linear and angular accelerations, etc. This work is
+intended to provide a comprehensive literature review on the VSA estimation problem. Two main
+estimation methods have been categorised, i.e., observer-based and neural network-based, focussing
+on the most effective and innovative approaches. As the first method normally relies on a vehicle
+model, a review of the vehicle models has been included. The advantages and limitations of each
+technique have been highlighted and discussed.
+
+Keywords: vehicle state estimation; vehicle dynamics; Extended Kalman Filter; Unscented Kalman
+Filter; GPS-aided estimation; neural networks
+
+1. Introduction
+
+Vehicle sideslip angle (VSA) estimation has been a big challenge since the introduction of the very
+first on-board active systems controlling vehicle stability, such as the electronic stability control (ESC,
+also known as ESP) in the early 1990s [1].
+
+Nowadays, vehicle control systems (VCS) such as rear wheel steering, active steering, direct yaw
+moment control (DYC) through active differentials or torque vectoring, advanced traction controls, and
+the above-mentioned ESC (in all its forms) are used in conjunction to extend the vehicle performance
+and stability envelopes. They enhance road-holding capabilities, cornering performance, drivability,
+and ultimately stability, especially assisting the driver during emergency manoeuvres and in poor
+“grip” conditions [2–5]. All of these controls rely on vehicle state real-time assessments, and on VSA
+monitoring in particular. A fast and accurate estimation of the VSA can be considered a key to active
+safety, reducing the likelihood of dangerous events such as instability, loss of control, and roll-over,
+hence decreasing the number of accidents directly and abating the social impact of mobility.
+
+The VSA is strongly related with the dynamic behaviour of ground vehicles. In purely kinematic
+terms, the VSA amplitude depends upon lateral acceleration, vehicle mass and mass distribution,
+
+Appl. Sci. 2018, 8, 355; doi:10.3390/app8030355 www.mdpi.com/journal/applsci
+
+}
+}
+
+@InProceedings{Estimation2010,
+  Title                    = {Master Thesis Proposal},
+  Author                   = {Safe Estimation and of Vehicle and Side-Slip  and for Autonomous and Heavy Vehicle},
+  Year                     = {2010},
+
+  File                     = {:papers/Safe Side-Slip Estimation_2.pdf:PDF},
+  Review                   = {Master Thesis Proposal 
+
+Safe Estimation of Vehicle Side-Slip 
+for Autonomous Heavy Vehicle 
+
+Background Side-slip is a fundamental motion state that is used to control the vehicle, i.e. for 
+controlling the path and the lateral stability of the vehicle. The classical method is to estimate side-
+
+slip by combining vehicle dynamics models with measurements of accelerometers on-board the 
+
+vehicle. Due to parameter uncertainties in for example tires and accelerometer drift, it is in general 
+
+difficult to estimate side-slip with high accuracy. For autonomous vehicles there is a need for side-
+
+slip estimates with a high level of functional safety. This means than the side-slip estimator should 
+
+estimate correctly to not generate any hazard threaten the vehicle. 
+
+Side-slip angle
+Reference (ADMA)  
+
+Observer
+10
+
+0
+
+-10
+
+ 
+80 90 100 110 120 130 140 150 160
+
+Time [s]  
+
+Fig 1. A Tractor semi-trailer truck with an UKF estimator and reference output from [1]. 
+
+Objective The objective is to design a filter to estimate side-slip used for autonomous heavy 
+vehicles. The design should primarily focus on being safe, e.g. not producing outliers. Important is to 
+
+estimate the variance of the estimate to address to the vehicle motion controller about the side-slip 
+
+uncertainty. A tool for formal verification of the estimator should also be designed to understand 
+
+the space of admissible parameters of sensors and vehicle to fulfill safety requirements. This tool 
+
+should in turn be applied to formulate requirements of e.g. box constraints of tire parameters and 
+
+mass distribution. 
+
+Scope and Method The first part of the thesis is to perform a literature survey in side-slip 
+estimation and then design at least one filter e.g. EKF, UKF, particle filter etc. An earlier master thesis 
+
+have been carried out [1], However, the reliability and requirements were not included in the earlier 
+
+thesis. The requirements of the side-slip will be given as input for the new master thesis. 
+
+Experimental data including ground truth, will be given. Particular focus will be put on a tractor 
+
+semi-trailer combination. Next part is to develop the formal verification tool and formulate 
+
+requirements.  
+
+The duration of the study will be 20 weeks (30 ETCs, MSc thesis). The work will be carried out at 
+
+Volvo Group. The outcome has potential to be published in a scientific journal or conference 
+
+(depending on quality and ambitions). Suitable background is vehicle dynamics, control theory, 
+
+signal processing. Both Mechanical and Signal processing engineering are valuable. Start date is Jan 
+
+2019. 
+
+Contacts: 
+Leo Laine, Volvo Group leo.laine@volvo.com 
+Mats Jonasson, Chalmers  mats.jonasson@chalmers.se 
+[1] M. Arrambide and Erik Durling, “Design of a side-slip observer for single-unit heavy trucks. A non-linear model-based approach with an 
+
+unscented Kalman filter”, Master Thesis, Report No. EX031/2010, Chalmers, Gothenburg, Sweden, 2010. 
+
+Angle []
+
+}
+}
+
+@InProceedings{USING2004,
+  Title                    = {STATE AND PARAMETER ESTIMATION FOR VEHICLE DYNAMICS},
+  Author                   = {Jiha},
+  Year                     = {2004},
+
+  File                     = {:papers/2004_Thesis_Ryu_State_and_Parameter_Estimation_for_Vehicle.pdf:PDF},
+  Review                   = {STATE AND PARAMETER ESTIMATION FOR VEHICLE DYNAMICS
+
+CONTROL USING GPS
+
+a dissertation
+
+submitted to the department of mechanical engineering
+
+and the committee on graduate studies
+
+of stanford university
+
+in partial fulfillment of the requirements
+
+for the degree of
+
+doctor of philosophy
+
+Jihan Ryu
+
+December 2004
+
+}
+}
+
+@Article{nam2012estimation,
+  Title                    = {Estimation of sideslip and roll angles of electric vehicles using lateral tire force sensors through RLS and Kalman filter approaches},
+  Author                   = {Nam, Kanghyun and Oh, Sehoon and Fujimoto, Hiroshi and Hori, Yoichi},
+  Journal                  = {IEEE Transactions on Industrial Electronics},
+  Year                     = {2012},
+  Number                   = {3},
+  Pages                    = {988--1000},
+  Volume                   = {60},
+
+  Owner                    = {xiang.zhang},
+  Publisher                = {IEEE},
+  Timestamp                = {2019.06.21}
+}
+
+@Article{qin2019general,
+  Title                    = {A General Optimization-based Framework for Global Pose Estimation with Multiple Sensors},
+  Author                   = {Qin, Tong and Cao, Shaozu and Pan, Jie and Shen, Shaojie},
+  Journal                  = {arXiv preprint arXiv:1901.03642},
+  Year                     = {2019},
+
+  Owner                    = {xiang.zhang},
+  Timestamp                = {2019.06.21}
+}
+
+@Article{qin2018vins,
+  Title                    = {Vins-mono: A robust and versatile monocular visual-inertial state estimator},
+  Author                   = {Qin, Tong and Li, Peiliang and Shen, Shaojie@article{qin2019general,
+  title={A General Optimization-based Framework for Global Pose Estimation with Multiple Sensors},
+  author={Qin, Tong and Cao, Shaozu and Pan, Jie and Shen, Shaojie},
+  journal={arXiv preprint arXiv:1901.03642},
+  year={2019}
+}},
+  Journal                  = {IEEE Transactions on Robotics},
+  Year                     = {2018},
+  Number                   = {4},
+  Pages                    = {1004--1020},
+  Volume                   = {34},
+
+  Owner                    = {xiang.zhang},
+  Publisher                = {IEEE},
+  Timestamp                = {2019.06.21}
+}
+
+@InProceedings{贺一家2017,
+  Title                    = {VINS-Mono数学公式推导},
+  Author                   = {贺一家 },
+  Year                     = {2017},
+
+  Abstract                 = {},
+  File                     = {:multi-sensor/VINS公式推导.pdf:PDF},
+  Review                   = {VINS-Mono数学公式推导
+
+贺一家
+
+November 13, 2017
+
+Abstract
+
+该笔记主要是对港科大沈邵颉老师组的开源代码VINS-Mono中涉及到的IMU公式(预积分factor，视觉factor，
+
+各类雅克比)进行推导和整理，方便以后学习，欢迎大家讨论交流。
+
+1 预备知识
+
+该部分只列举几个十分有用的性质，主要是和四元数的求导有关的，至于四元数更全面的性质，请参见参考文献。
+
+1.1 四元数的简单性质
+
+定义四元数q由一个实部qw和一个三维向量qv = qxi+ qyj + qzk组成   
+qw
+
+qw
+q = = 
+
+
+qx
+  (1)qv qy
+qw
+
+四元数的加法跟普通向量的加法一样，但是乘法就复杂多了，两个四元数相乘
+⊗ 
+
+
+pwq
+
+T
+w − pv qv
+
+p q =  (2)
+pwqv + qwpv + [pv]×qv
+
+两个四元数的这种乘法和旋转矩阵的连乘效果是一样的
+
+qAC = qAB ⊗ qBC , RAC = RABRBC (3)
+
+1
+
+}
+}
+
+@InProceedings{Vehicle0415,
+  Title                    = {Robust Vehicle Sideslip Angle Estimation through a Disturbance Rejection Filter that Integrates a Magnetometer with GPS},
+  Year                     = {0415},
+
+  Abstract                 = {This paper presents a novel method which extended Luenberger observer, extended Kalman filter, and
+estimates the vehicle sideslip angle for a wide range of surface sliding-mode observer), and concluded that nonlinear 
+frictions and road bank angles by combining measurements of a 
+},
+  File                     = {:papers/IEEE_ITS.pdf:PDF},
+  Review                   = {T-ITS-12-10-0415 1
+
+Robust Vehicle Sideslip Angle Estimation 
+through a Disturbance Rejection Filter that 
+
+Integrates a Magnetometer with GPS 
+Jong-Hwa Yoon and Huei Peng 
+
+performance of four types of observers (linear observer, 
+  
+
+Abstract— This paper presents a novel method which extended Luenberger observer, extended Kalman filter, and 
+estimates the vehicle sideslip angle for a wide range of surface sliding-mode observer), and concluded that nonlinear 
+frictions and road bank angles by combining measurements of a 
+
+( ) observers worked better than linear observers. Cherouat [5] magnetometer, Global Positioning System GPS , and Inertial 
+M t U it (IMU) T j t di t b i th also proposed a nonlinear observer which does not require easuremen  n  . o re ec  s ur ances n e 
+magnetometer a new stochastic filter is designed and integrated yaw rate measurement.  Yih [6] proposed to use steering ,         
+on the torque information for sideslip angle estimation. This method   Kalman Filter framework. The significant latency in a 
+low-cost GPS velocity measurement is addressed by would be useful for steer-by-wire systems. Gao [7] showed 
+“measurement shifting”, and biases in the IMU measurements that a high-gain observer based on input-output linearization 
+are estimated through state augmentation. Dual Kalman Filters was useful. Grip [8] proposed a nonlinear observer with 
+are employed in the sensor fusing framework. A comprehensive 
+i l ti t dy d friction adaptation. Dynamic model-based methods have s mu a on s u  was con ucted to prove the feasibility of the 
+
+method. Finally, the performance and accuracy are verified shown the capability to estimate sideslip angles. However, this  
+through extensive experiments class of methods has two drawbacks; it requires accurate   .  
+
+vehicle parameter information such as cornering stiffness, 
+ 
+
+Index Terms—Sideslip estimation, magnetometer, stochastic vehicle mass and moment of inertia [1, 9], and they work only 
+filter, disturbance rejection, Global Positioning System (GPS), for small sideslip angles (roughly 4 degree or less) [10]. 
+Kalman Filter IMU integration-based methods process signals of the 
+
+Inertial Measurement Unit (IMU) to estimate the sideslip 
+I. INTRODUCTION angle. Farrelly was among the early researchers to use this 
+
+T HE vehicle sideslip angle is a critical piece of method [1]. He showed that sideslip estimation was robust to information for electronic stability control (ESC) systems; cornering stiffness variations. It was also shown that the  
+hence the National Highway Traffic Safety Administration method worked for large sideslip angle, which is in the        
+(NHTSA) sets its estimation as a requirement of production nonlinear range of the sideslip-lateral force curve. Imsland          
+ESC in the United States Many researchers have proposed [11] proposed a nonlinear observer and showed that the   .     
+methodologies toward its estimation which can be grouped estimation performance was satisfactory even at large sideslip    ,     
+into three categories; Dynamic model based IMU integration angles. Ungoren [12] also confirmed the robustness of IMU     - ,  -
+based and GPS based integration-based methods for various sideslip angle ranges. ,  - .  
+
+Dynamic model based methods employ a vehicle dynamic This type of method does not require accurate parameters and  -       
+d l th t d ib h th ti t d id lip gl i works well even for large sideslip angles. However, unknown mo e  a  escr es ow e  es ma e  s es  an e s 
+
+affected by and related t hi l bias in the sensor measurement can significantly deteriorate  o ve c e input signals and 
+p h i g gl d i i g iff the estimation accuracy because IMU integration-based arameters, suc  as steer n  an e an  t re corner n  st ness. 
+
+ll [ ] d methods heavily rely on measurement integration.  Farre y 1  propose  a standard Luenberger observer of a Bevly proposed a method utilizing a single antenna GPS 
+linearized system with Kalman Filter gains and Insensitive along with an IMU for sideslip angle estimation [13-14]. Since 
+Observer gains. Kalman Filter gains are selected for optimal 
+
+j the vehicle heading angle is not observable with a single noise re ection, and the Insensitive Observer gain is selected to antenna GPS, this method relies on IMU measurement 
+enhance robustness against parameter uncertainties. Kiencke integration to calculate the heading angle. Even though this 
+[2] showed the feasibility of a nonlinear observer and the method demonstrated its estimation capability, it does not 
+nonlinear observer was found to outperform the linear effectively address out-of-plane vehicle motion such as roll 
+observer in his work. Best [3] showed that simultaneous and pitch angles. Yoon proposed a new method using two 
+estimation of cornering stiffness enhanced sideslip angle single antenna GPS receivers [15]. This method uses the 
+estimation performance. Stephan [4] compared the estimation kinematic relationship between the velocities of two GPS        
+
+receivers; hence vehicle heading and sideslip angles are 
+ 
+
+J H Y d H P g i h h D p f M h i l calculated directly. However, this method works only for in-.- . oon an  . en  are w t  t e e artment o  ec an ca  
+Engineering, G041 Lay Automotive Laboratory, University of Michigan Ann plane vehicle motion. Ryu proposed a method using a dual-  ,  
+Arbor, MI 48109 USA (e-mail: jongy@umich.edu; hpeng@umich.edu)  
+
+}
+}
+

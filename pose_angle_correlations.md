@@ -1,6 +1,10 @@
+# B4 Correlation analysis
 
+## 1. General states
 
-## B4
+### Side slip angle and others
+
+[link](/home/xiang.zhang/gitRepo/sideslip/examples/plots/2019-06-21_13-50-27_body_and_vehicle_rate_bias_onesecsmth/sideslip)
 
 ### Azimuth and roll
 
@@ -52,17 +56,58 @@
 
 ![1561052867084](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561052867084.png)
 
-### Diff_yaw_rate and pitch_rate
+## 2. Gyro bias
+
+### Factors involved: 
+
+- IMU-to-Vehicle rotation angles.
+- Synchronization, which is processed by sliding window averaging.
+
+### Some questions:
+
+- [x] Is the bias estimation stable during the straight and cornering condition?
+
+  - relatively stable when moving straightly and 
+
+  - significant change at the beginning and the end of the cornering
+
+  ![1561151513886](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561151513886.png)
+
+- [x] What is the short term bias estimation?
+
+  - about `-0.01`
+
+### a. Gyro bias and vehicle yaw rate bias estimation from NovAtel
+
+![1561151758150](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561151758150.png)
+
+![1561151770673](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561151770673.png)
+
+![1561151778786](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561151778786.png)
+
+![1561151788451](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561151788451.png)
+
+### 
+
+### c. Bias_yaw_rate_b and corrected vehicle pitch_rate, roll_rate, etc.
+
+![1561152040707](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561152040707.png)
+
+![1561152290706](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561152302718.png)
 
 
 
-### Diff_yaw_rate and roll_rate
+### d. Bias_yaw_rate_v and corrected vehicle pitch_rate, roll_rate, etc.
+
+![1561152346297](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561152346297.png)
+
+![1561152355677](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561152355677.png)
+
+![1561152414070](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561152414070.png)
+
+## 3. Worth a look
 
 
-
-
-
-### Worth a look
 
 ![1561076029179](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561076029179.png)
 

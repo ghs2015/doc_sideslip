@@ -6,6 +6,8 @@
 
 [link](/home/xiang.zhang/gitRepo/sideslip/examples/plots/2019-06-21_13-50-27_body_and_vehicle_rate_bias_onesecsmth/sideslip)
 
+[All plots](/home/xiang.zhang/gitRepo/sideslip/examples/plots/2019-06-21_16-13-00_vehicle_imu_frame_all_pose)
+
 ### Azimuth and roll
 
 
@@ -75,7 +77,15 @@
 
 - [x] What is the short term bias estimation?
 
-  - about `-0.01`
+  - about `-0.01` given 1 second sliding window average.
+
+- [x] What are bias of other two gyros?
+
+  - Significant change **during** the cornering.
+
+![1561159331121](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561159331121.png)
+
+![1561159353433](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1561159353433.png)
 
 ### a. Gyro bias and vehicle yaw rate bias estimation from NovAtel
 

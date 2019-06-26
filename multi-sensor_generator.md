@@ -33,5 +33,6 @@ https://github.com/Aceinna/gnss-ins-sim
 
 # To-do
 - [x] Finish the readme of Aceinna/gnss-ins-sim
+- [x] Check the imu error model about azimuth. -> error model snippets
 - [ ] Analyze the weird curves of side slip plots.
 - [ ] Find out the code converting IMU spec to simulated output.

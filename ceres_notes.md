@@ -1,7 +1,7 @@
 ## 1. questions
 	- [ ] IMUFactor as the cost function.
 		- used to compute the residual vector and Jacobians matrices
-		- [ ] what residual vector
+		- [ ] what residual vector, why is `vector`?
 	- [ ] Problem class // what is this?? 
 	- [ ] how to add multiple cost functions/`functors`?
 	- [ ] what is `AutoDiffCostFunction`
@@ -96,6 +96,7 @@
 
 
 ## Reference
+------------
 	- [A Tutorial on Graph-Based SLAM](http://www2.informatik.uni-freiburg.de/~stachnis/pdf/grisetti10titsmag.pdf)
 	- [Guass-Newton Algorithm explained by whudj](http://www.whudj.cn/?p=1122#more-1122)
 	- [梯度下降法(gradient descent)与牛顿法(newton’s method)求解最小值](http://www.whudj.cn/?p=1042)

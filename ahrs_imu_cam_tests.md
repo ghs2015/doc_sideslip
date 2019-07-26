@@ -1,11 +1,49 @@
-
-
-## TODO
+## TO-DO
 
 - [x] Fix the velocity inconsistency issue.
-- [ ] Add accuracy print.
-- [ ] Add camera observation interface.
-- [ ] Test multiple key frames.
+
+- [x] Add accuracy print to imu factor test.
+
+- [x] Add camera observation interface.
+  - [x] position
+  - [x] orientation
+  - [x] debug
+  
+- [x] Add accuracy print to imu-cam factor test.
+
+- [x] Test multiple key frames of IMU factor.
+  
+  - [x] debug
+  
+- [x] Analyze/debug IMU-CAM factor results.
+
+- [x] Test multiple key frames of IMU-CAM factor.
+  - [x] implement
+  - [x] debug
+  
+- [x] Review the source code.
+
+- [ ] IMU-CAM multi-frame
+
+  - [x] Confirm the calculation of calibration error.
+  - [x] check and fix the Euler angle.
+  - [x] **confirm again the define and update of calibration errors.**
+  - [ ] confirm the way of calculate final calibration estimation error.
+    - [ ] debug the output abnormal after refactor. 
+      - [ ] check the input to the evaluate or parameter block
+
+- [ ] Collect or update the results.
+
+- [ ] Test IMU-CAM calibration.
+
+- [ ] Fix erroneous coding. Use unit tests?
+
+  
+
+## Inbox
+
+- [ ] `  5 /usr/local/include/ceres/jet.h:165:22: fatal error: Eigen/Core: No such file or directory  `
+- [ ] **Add GT/Noisy camera data option to the frame data loader.**
 
 ## Motion profiles
 
@@ -644,3 +682,173 @@ motion profile: `ts_motion_def-long_drive_ned.csv`
 
 ##### Without noises
 ##### With noises
+
+## Those bugs:
+
+- [x] IMU factor multi-frame
+  - [x] high cost of two key frames, Estimation errors of pose_params
+
+![1563567581771](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1563567581771.png)
+
+![1563567726188](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1563567726188.png)`
+
+- [x] frame 0 pose accuracy
+![1563569555269](/home/xiang.zhang/gitRepo/project/doc_sideslip/plots/1563569555269.png)
+
+### IMU-Cam two key frames
+
+- [ ] test_simulated_imu_cam_factor.cpp`
+
+### IMU-Cam Multiple frames
+
+#### - [x] Abnormal calibration accuracy
+
+- 15 navigation parameters looked normal, calibration results looked abnormal.
+
+   ```c++
+  Estimation errors of pose error, P_xyz, Q_xyzw
+  Frame: 0
+  0   0   0   0   0   0   0   
+  Frame: 1
+  -4.54485e-07   -1.1269e-06   1.31642e-06   6.45469e-06   1.35274e-06   -4.65497e-06   -9.58458e-06   
+  Frame: 2
+  -1.36439e-07   -9.48086e-07   1.38488e-06   3.93422e-06   5.56417e-07   -3.98968e-06   -4.30852e-06   
+  Frame: 3
+  3.32948e-07   1.13621e-07   1.69501e-07   -1.45979e-06   -8.75356e-07   -5.35128e-07   3.92356e-06   
+  Frame: 4
+  0   0   0   0   0   0   0   
+  Estimation errors of speedbias error, V_xyz, Ba_xyz, Bg_xyz
+  Frame: 0
+  0   0   0   0   0   0   0   0   0   
+  Frame: 1
+  -1.34105e-06   -4.87914e-06   6.42836e-06   -6.85769e-09   -1.58442e-08   -4.63736e-09   5.62011e-10   1.23714e-10   -4.73226e-10   
+  Frame: 2
+  3.37222e-06   5.34657e-06   -4.8967e-06   -8.87487e-09   -2.09097e-08   -6.18602e-09   5.37174e-10   4.82309e-10   -5.91752e-10   
+  Frame: 3
+  -2.21783e-07   2.20083e-06   -4.02076e-06   -6.44635e-09   -1.55143e-08   -4.6345e-09   4.70983e-10   3.61901e-10   -4.23097e-10   
+  Frame: 4
+  0   0   0   0   0   0   0   0   0   calib gt
+  0.1,0.15,-0.2,-0.000443492,-0.000869018,0.000443566,0.999999,
+  calib opt
+  0.207781,0.236376,0.249086,0.0308025,-0.0335464,-0.00284903,0.998958,
+  
+  Estimation errors of calib error, P_xyz, Q_xyzw
+  Frame: 0
+  0.107781   0.0863762   0.449086   0.031246   -0.0326774   -0.0032926   -0.0010411   gt_delta_euler in yaw, pitch, roll
+   179.568
+   -176.18
+  -176.466
+  delta_euler in yaw, pitch, roll
+   0.0508769
+  -0.0995669
+  -0.0508684
+  error_delta_euler in yaw, pitch, roll
+   179.517
+   -176.08
+  -176.415
+  Process finished with exit code 0
+  
+  ```
+
+  
+  
+  #### - [ ] Abnormal of all outputs after re-factor
+  
+  ```c++
+  /home/xiang.zhang/gitRepo/sensor-fusion-navigation-v3/bin/test_simulated_imu_cam_factor_multiframe
+  Process /mnt/truenas/scratch/xiang.zhang/imu_cam_two_laps_ned.csv with noise flag: 0
+  skip the header
+  Loaded 101 frames.
+  iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+     0  7.238760e+07    0.00e+00    6.55e+07   0.00e+00   0.00e+00  1.00e+04        0    9.49e-04    1.06e-03
+     1  2.114968e+01    7.24e+07    1.17e+04   1.24e+01   1.00e+00  3.00e+04        1    1.21e-03    2.33e-03
+     2  5.027262e+00    1.61e+01    2.28e+00   7.80e-01   1.00e+00  9.00e+04        1    1.44e-03    3.79e-03
+  iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+     0  2.550115e+08    0.00e+00    9.69e+07   0.00e+00   0.00e+00  1.00e+04        0    1.51e-03    1.58e-03
+     1  1.229729e+03    2.55e+08    5.50e+04   1.39e+01   1.00e+00  3.00e+04        1    2.36e-03    3.97e-03
+     2  1.066779e+03    1.63e+02    3.00e+01   6.83e-01   1.00e+00  9.00e+04        1    2.28e-03    6.27e-03
+  iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+     0  7.360455e+08    0.00e+00    1.65e+08   0.00e+00   0.00e+00  1.00e+04        0    2.23e-03    2.28e-03
+     1  8.919146e+03    7.36e+08    4.46e+05   1.57e+01   1.00e+00  3.00e+04        1    3.49e-03    5.81e-03
+     2  3.046365e+03    5.87e+03    1.26e+03   6.00e-01   1.00e+00  9.00e+04        1    3.44e-03    9.28e-03
+  iter      cost      cost_change  |gradient|   |step|    tr_ratio  tr_radius  ls_iter  iter_time  total_time
+     0  1.535288e+09    0.00e+00    2.36e+08   0.00e+00   0.00e+00  1.00e+04        0    2.78e-03    2.84e-03
+     1  6.272543e+07    1.47e+09    4.62e+07   2.81e+01   9.69e-01  3.00e+04        1    4.47e-03    7.34e-03
+     2  1.526943e+07    4.75e+07    2.27e+06   4.92e+00   9.99e-01  9.00e+04        1    4.39e-03    1.18e-02
+     3  1.458502e+07    6.84e+05    3.76e+05   5.22e-01   1.06e+00  2.70e+05        1    4.40e-03    1.62e-02
+     4  1.454422e+07    4.08e+04    6.62e+04   3.72e-01   1.10e+00  8.10e+05        1    4.09e-03    2.03e-02
+  
+  Solver Summary (v 1.14.0-eigen-(3.2.92)-lapack-suitesparse-(4.4.6)-cxsparse-(3.1.4)-eigensparse-openmp-no_tbb)
+  
+                                       Original                  Reduced
+  Parameter blocks                           11                        7
+  Parameters                                 87                       55
+  Effective parameters                       81                       51
+  Residual blocks                             9                        9
+  Residuals                                  90                       90
+  
+  Minimizer                        TRUST_REGION
+  
+  Sparse linear algebra library    SUITE_SPARSE
+  Trust region strategy     LEVENBERG_MARQUARDT
+  
+                                          Given                     Used
+  Linear solver          SPARSE_NORMAL_CHOLESKY   SPARSE_NORMAL_CHOLESKY
+  Threads                                     1                        1
+  Linear solver ordering              AUTOMATIC                        7
+  
+  Cost:
+  Initial                          1.535288e+09
+  Final                            1.454422e+07
+  Change                           1.520744e+09
+  
+  Minimizer iterations                        5
+  Successful steps                            5
+  Unsuccessful steps                          0
+  
+  Time (in seconds):
+  Preprocessor                         0.000052
+  
+    Residual only evaluation           0.007312 (5)
+    Jacobian & residual evaluation     0.013421 (5)
+    Linear solver                      0.000455 (5)
+  Minimizer                            0.021832
+  
+  Postprocessor                        0.000014
+  Total                                0.021899
+  
+  Termination:                      CONVERGENCE (Parameter tolerance reached. Relative step_norm: 7.492190e-09 <= 1.000000e-08.)
+  
+  
+  Estimation errors of pose error, P_xyz, Q_xyzw
+  Frame: 0
+  0   0   0   0   0   0   0   
+  Frame: 1
+  0.941173   1.14714   -0.503103   0.0238314   -0.0551937   0.0233149   -0.155344   
+  Frame: 2
+  0.939737   1.13612   -0.511099   0.00398042   -0.0441024   0.0112346   -0.0898654   
+  Frame: 3
+  0.364528   0.440202   -0.199011   0.00583677   -0.0200382   0.00618209   -0.0570951   
+  Frame: 4
+  0   0   0   0   0   0   0   
+  
+  Estimation errors of speedbias error, V_xyz, Ba_xyz, Bg_xyz
+  Frame: 0
+  0   0   0   0   0   0   0   0   0   
+  Frame: 1
+  2.71668   3.21973   -1.54481   -9.24517e-05   -0.000327615   -0.000135677   -7.13434e-06   3.60817e-06   -3.84739e-06   
+  Frame: 2
+  -2.09304   -2.55286   1.11797   -8.8572e-05   -0.000316562   -0.000125175   -6.99038e-06   4.02198e-06   -5.29901e-06   
+  Frame: 3
+  -3.00159   -3.62359   1.63662   -3.19633e-05   -0.000127151   -5.54855e-05   -4.42012e-06   2.77199e-06   -4.11656e-06   
+  Frame: 4
+  0   0   0   0   0   0   0   0   0   
+  error of lever arm x, y, z (meter): -0.790608, -4.4315, -3.29208
+  error of imu to cam rotation: 64.5016
+  
+  Process finished with exit code 0
+  
+  ```
+  
+  
+
